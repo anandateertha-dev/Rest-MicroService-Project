@@ -26,7 +26,7 @@ public class UserInterceptor implements HandlerInterceptor {
             log.info("Username is " + userName);
             log.info("Request being passed to the service.");
 
-            if (userName.length() > 10 | userId.length() != 4) {
+            if (userName.length() != 10 & !(userId.length() != 4) & userName.matches("[a-zA-Z]+")) {
                 ResponseEntity<String> errorResponse = ResponseEntity.badRequest().body(
                         "User name length should be less than or equal to 10 characters and userId length should be less than or equal to 4 characters");
                 response.getWriter().write(errorResponse.getBody());
